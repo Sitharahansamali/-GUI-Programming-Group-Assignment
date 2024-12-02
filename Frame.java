@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                             import javax.swing.*;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +7,14 @@ import java.util.regex.Pattern;
 
 public class Frame extends JFrame implements ActionListener {
 
+    final int labelWidth = 120;
+    final int labelHeight = 35;
+    final int textboxWidth = 250;
+    final int textboxHeight = 30;
+
     private static final int WIDTH = 500;
-    private static final int HEIGHT = 700;
+    private static final int HEIGHT = 800;
+
 
     private JTextField nameField, emailField, emailSignInField;
     private JPasswordField passwordField, passwordSignInField;
@@ -26,141 +32,159 @@ public class Frame extends JFrame implements ActionListener {
         setLayout(null);
 
         // Header
-        JLabel headerLabel = new JLabel("Sign Up");
-        headerLabel.setFont(new Font("Arial", Font.BOLD, 25));
-        headerLabel.setBounds(200, 20, 200, 30);
-        headerLabel.setForeground(new Color(0, 102, 204));
-        add(headerLabel);
+        {
+            JLabel headerLabel = new JLabel("Sign Up");
+            headerLabel.setFont(new Font("Arial", Font.BOLD, 25));
+            headerLabel.setBounds(200, 20, 200, 30);
+            headerLabel.setForeground(Color.BLUE);
+            add(headerLabel);
+        }
 
         // Name field
-        JLabel nameLabel = new JLabel("User Name:");
-        nameLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-        nameLabel.setBounds(30, 70, 100, 25);
-        add(nameLabel);
-
-        nameField = new JTextField();
-        nameField.setFont(new Font("Arial", Font.PLAIN, 15));
-        nameField.setBounds(120, 70, 250, 25);
-        add(nameField);
+        {
+            JLabel nameLabel = new JLabel("Name");
+            nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            nameLabel.setBounds(30, 70, labelWidth, labelHeight);
+            add(nameLabel);
+    
+            nameField = new JTextField();
+            nameField.setFont(new Font("Arial", Font.PLAIN, 15));
+            nameField.setBounds(150, 75, textboxWidth, textboxHeight);
+            add(nameField);
+        }
 
         // Email field
-        JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-        emailLabel.setBounds(30, 110, 100, 25);
-        add(emailLabel);
-
-        emailField = new JTextField();
-        emailField.setFont(new Font("Arial", Font.PLAIN, 15));
-        emailField.setBounds(120, 110, 250, 25);
-        add(emailField);
+        {
+            JLabel emailLabel = new JLabel("Email");
+            emailLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            emailLabel.setBounds(30, 120, labelWidth, labelHeight);
+            add(emailLabel);
+    
+            emailField = new JTextField();
+            emailField.setFont(new Font("Arial", Font.PLAIN, 15));
+            emailField.setBounds(150, 125, textboxWidth, textboxHeight);
+            add(emailField);
+        }
 
         // Gender selection
-        JLabel genderLabel = new JLabel("Gender:");
-        genderLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-        genderLabel.setBounds(30, 150, 100, 25);
-        add(genderLabel);
-
-        JRadioButton maleButton = new JRadioButton("Male");
-        maleButton.setBounds(120, 150, 90, 25);
-        maleButton.setFont(new Font("Arial", Font.PLAIN, 15));
-
-        JRadioButton femaleButton = new JRadioButton("Female");
-        femaleButton.setBounds(220, 150, 90, 25);
-        femaleButton.setFont(new Font("Arial", Font.PLAIN, 15));
-
-        genderGroup = new ButtonGroup();
-        genderGroup.add(maleButton);
-        genderGroup.add(femaleButton);
-        add(maleButton);
-        add(femaleButton);
+        {
+            JLabel genderLabel = new JLabel("Gender:");
+            genderLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            genderLabel.setBounds(30, 170, labelWidth, labelHeight);
+            add(genderLabel);
+    
+            JRadioButton maleButton = new JRadioButton("Male");
+            maleButton.setBounds(150, 170, labelWidth, labelHeight);
+            maleButton.setFont(new Font("Arial", Font.PLAIN, 18));
+    
+            JRadioButton femaleButton = new JRadioButton("Female");
+            femaleButton.setBounds(280, 170, labelWidth, labelHeight);
+            femaleButton.setFont(new Font("Arial", Font.PLAIN, 18));
+    
+            genderGroup = new ButtonGroup();
+            genderGroup.add(maleButton);
+            genderGroup.add(femaleButton);
+            add(maleButton);
+            add(femaleButton);
+        }
 
         // Birthday field
-        JLabel birthdayLabel = new JLabel("Birthday:");
-        birthdayLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-        birthdayLabel.setBounds(30, 190, 100, 25);
-        add(birthdayLabel);
-
-        Integer[] dates = new Integer[31];
-        for (int i = 0; i < 31; i++) {
-            dates[i] = i + 1;
+        {
+            JLabel birthdayLabel = new JLabel("Birthday");
+            birthdayLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            birthdayLabel.setBounds(30, 220, labelWidth, labelHeight);
+            add(birthdayLabel);
+    
+            Integer[] dates = new Integer[31];
+            for (int i = 0; i < 31; i++) {
+                dates[i] = i + 1;
+            }
+            dateComboBox = new JComboBox<>(dates);
+            dateComboBox.setBounds(150, 220, 60, 30);
+            add(dateComboBox);
+    
+            String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+            monthComboBox = new JComboBox<>(months);
+            monthComboBox.setBounds(210, 220, 90, 30);
+            add(monthComboBox);
+    
+            Integer[] years = new Integer[101];
+            for (int i = 0; i < 35; i++) {
+                years[i] = 1990 + i;
+            }
+            yearComboBox = new JComboBox<>(years);
+            yearComboBox.setBounds(300, 220, 90, 30);
+            add(yearComboBox);
         }
-        dateComboBox = new JComboBox<>(dates);
-        dateComboBox.setBounds(120, 190, 50, 25);
-        add(dateComboBox);
-
-        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-        monthComboBox = new JComboBox<>(months);
-        monthComboBox.setBounds(180, 190, 80, 25);
-        add(monthComboBox);
-
-        Integer[] years = new Integer[101];
-        for (int i = 0; i < 101; i++) {
-            years[i] = 1990 + i;
-        }
-        yearComboBox = new JComboBox<>(years);
-        yearComboBox.setBounds(270, 190, 80, 25);
-        add(yearComboBox);
 
         // Password field
-        JLabel passwordLabel = new JLabel("Password:");
-        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-        passwordLabel.setBounds(30, 230, 100, 25);
-        add(passwordLabel);
-
-        passwordField = new JPasswordField();
-        passwordField.setFont(new Font("Arial", Font.PLAIN, 15));
-        passwordField.setBounds(120, 230, 250, 25);
-        add(passwordField);
+        {
+            JLabel passwordLabel = new JLabel("Password");
+            passwordLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            passwordLabel.setBounds(30, 270, labelWidth, labelHeight);
+            add(passwordLabel);
+    
+            passwordField = new JPasswordField();
+            passwordField.setFont(new Font("Arial", Font.PLAIN, 15));
+            passwordField.setBounds(150, 275, textboxWidth, textboxHeight);
+            add(passwordField);
+        }
 
         // Checkbox for robot verification
-        robotCheckBox = new JCheckBox("I am not a robot");
-        robotCheckBox.setBounds(30, 270, 250, 25);
-        robotCheckBox.setFont(new Font("Arial", Font.PLAIN, 14));
-        add(robotCheckBox);
+        {
+            robotCheckBox = new JCheckBox("I am not a robot.");
+            robotCheckBox.setBounds(30, 320, 400, 30);
+            robotCheckBox.setFont(new Font("Arial", Font.PLAIN, 18));
+            add(robotCheckBox);
+        }
 
         // Sign-up button
-        signUpButton = new JButton("Sign Up");
-        signUpButton.setBounds(30, 310, 400, 30);
-        signUpButton.setBackground(new Color(0, 102, 204));
-        signUpButton.setForeground(Color.WHITE);
-        signUpButton.setFont(new Font("Arial", Font.BOLD, 15));
-        signUpButton.addActionListener(this);
-        add(signUpButton);
+        {
+            signUpButton = new JButton("Sign Up");
+            signUpButton.setFont(new Font("Arial", Font.BOLD, 25));
+            signUpButton.setBounds(30, 370, 440, 50);
+            signUpButton.setBackground(Color.BLUE);
+            signUpButton.setForeground(Color.WHITE);
+            signUpButton.addActionListener(this);
+            add(signUpButton);
+        }
 
         // Sign-in section
-        JLabel signInLabel = new JLabel("Sign In");
-        signInLabel.setFont(new Font("Arial", Font.BOLD, 25));
-        signInLabel.setBounds(200, 370, 200, 30);
-        signInLabel.setForeground(new Color(0, 102, 204));
-        add(signInLabel);
-
-        JLabel emailSignInLabel = new JLabel("Email:");
-        emailSignInLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-        emailSignInLabel.setBounds(30, 420, 100, 25);
-        add(emailSignInLabel);
-
-        emailSignInField = new JTextField();
-        emailSignInField.setFont(new Font("Arial", Font.PLAIN, 15));
-        emailSignInField.setBounds(120, 420, 250, 25);
-        add(emailSignInField);
-
-        JLabel passwordSignInLabel = new JLabel("Password:");
-        passwordSignInLabel.setFont(new Font("Arial", Font.PLAIN, 15));
-        passwordSignInLabel.setBounds(30, 460, 100, 25);
-        add(passwordSignInLabel);
-
-        passwordSignInField = new JPasswordField();
-        passwordSignInField.setFont(new Font("Arial", Font.PLAIN, 15));
-        passwordSignInField.setBounds(120, 460, 250, 25);
-        add(passwordSignInField);
-
-        signInButton = new JButton("Sign In");
-        signInButton.setBounds(30, 500, 400, 30);
-        signInButton.setBackground(new Color(0, 102, 204));
-        signInButton.setForeground(Color.WHITE);
-        signInButton.setFont(new Font("Arial", Font.BOLD, 15));
-        signInButton.addActionListener(this);
-        add(signInButton);
+        {
+            JLabel signInLabel = new JLabel("Sign In");
+            signInLabel.setFont(new Font("Arial", Font.BOLD, 25));
+            signInLabel.setBounds(200, 460, labelWidth, labelHeight);
+            signInLabel.setForeground(Color.BLUE);
+            add(signInLabel);
+    
+            JLabel emailSignInLabel = new JLabel("Email");
+            emailSignInLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            emailSignInLabel.setBounds(30, 510, labelWidth, labelHeight);
+            add(emailSignInLabel);
+    
+            emailSignInField = new JTextField();
+            emailSignInField.setFont(new Font("Arial", Font.PLAIN, 15));
+            emailSignInField.setBounds(150, 515, textboxWidth, textboxHeight);
+            add(emailSignInField);
+    
+            JLabel passwordSignInLabel = new JLabel("Password");
+            passwordSignInLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            passwordSignInLabel.setBounds(30, 560, labelWidth, labelHeight);
+            add(passwordSignInLabel);
+    
+            passwordSignInField = new JPasswordField();
+            passwordSignInField.setFont(new Font("Arial", Font.PLAIN, 15));
+            passwordSignInField.setBounds(150, 565, textboxWidth, textboxHeight);
+            add(passwordSignInField);
+    
+            signInButton = new JButton("Sign In");
+            signInButton.setFont(new Font("Arial", Font.BOLD, 25));
+            signInButton.setBounds(30, 630, 440, 50);
+            signInButton.setBackground(Color.BLUE);
+            signInButton.setForeground(Color.WHITE);
+            signInButton.addActionListener(this);
+            add(signInButton); 
+        }
     }
 
     @Override
