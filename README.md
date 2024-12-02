@@ -1,8 +1,11 @@
 Sign-Up and Sign-In Application
 
+
 **Overview**
 
 This project demonstrates a Java Swing-based Sign-Up and Sign-In graphical user interface (GUI) application, connected to a relational database. The application provides a user-friendly interface for account creation and login, adhering to the specifications outlined in the provided video tutorial.
+
+
 
 **Features**
 
@@ -14,12 +17,16 @@ Database Integration: Stores user data securely in a relational database using J
 
 UI Similarity: The graphical interface replicates the visual design and functionality of the reference video.
 
+
+
 **Technologies Used**
 
 Programming Language: Java
 GUI Framework: Java Swing
 Database: MySQL
 JDBC: For database connectivity
+
+
 
 **Project Structure**
 
@@ -30,6 +37,8 @@ Database: Includes an exported .sql file to create the required tables and popul
 Video Demonstration: A video showcasing the application's functionality and features.
 Optional PDF: List of group members and their contributions.
 
+
+
 **Prerequisites**
 
 Before running the application, ensure the following are installed:
@@ -38,11 +47,15 @@ Java Development Kit (JDK) (version 8 or later)
 MySQL Server
 Database Client (e.g., MySQL Workbench, phpMyAdmin)
 
+
+
 **Evaluation Criteria**
 
 Code Efficiency: Minimal lines of code with optimized logic.
 Readability: Clear and concise comments explaining the functionality.
 UI Similarity: Graphical interface closely mirrors the design shown in the tutorial.
+
+
 
 **Files Included**
 
