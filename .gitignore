@@ -15,8 +15,7 @@ out/
 # Log files
 *.log
 
-# Generated files
-*.jar
+# Generated filesgit 
 *.war
 *.ear
 
