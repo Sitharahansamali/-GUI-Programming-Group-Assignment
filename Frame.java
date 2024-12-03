@@ -95,7 +95,7 @@ public class Frame extends JFrame implements ActionListener {
         dateComboBox.setBounds(150, 220, 60, 30);
         add(dateComboBox);
 
-        String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        String[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
         monthComboBox = new JComboBox<>(months);
         monthComboBox.setBounds(210, 220, 90, 30);
         add(monthComboBox);
@@ -189,6 +189,10 @@ public class Frame extends JFrame implements ActionListener {
             String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
             Pattern emailPattern = Pattern.compile(emailRegex);
             Matcher matcher = emailPattern.matcher(email);
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             if (!matcher.matches()) {
                 JOptionPane.showMessageDialog(this, "Invalid email format.");
                 return;
