@@ -189,6 +189,11 @@ public class Frame extends JFrame implements ActionListener {
             String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
             Pattern emailPattern = Pattern.compile(emailRegex);
             Matcher matcher = emailPattern.matcher(email);
+
+             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "All fields are required!", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             if (!matcher.matches()) {
                 JOptionPane.showMessageDialog(this, "Invalid email format.");
                 return;
